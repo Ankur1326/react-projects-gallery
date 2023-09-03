@@ -26,8 +26,11 @@ function App() {
     
   }, [length, numberAllowed, charAllowed, setPassword])
 
-  console.log("numberAllowed", numberAllowed);
-  console.log("charAllowed", charAllowed);
+  const copyPasswordToClipboard = useCallback(() => {
+    passwordRef.current?.select();
+    passwordRef.current.setSelectionRange(0, 24)
+    window.navigator.clipboard.writeText(password)
+  }, [password])
 
   useEffect(() => {
     passwordGenerator()
@@ -60,7 +63,10 @@ function App() {
           </div>
           <div className='flex items-center gap-x-1'>
             <input type="checkbox" defaultChecked={numberAllowed} id='numberInput'
-              onChange={() => {((prev) => prev )}} />
+              onChange={() => {
+                setNumberAllowed((prev) => !prev) 
+                }}
+              />
             <label htmlFor="numberInput">Number</label>
           </div>
           <div className='flex items-center gap-x-1'>
