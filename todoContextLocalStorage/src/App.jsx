@@ -7,6 +7,7 @@ import TodoItem from './components/TodoItem'
 function App() {
   const [todos, setTodos] = useState([])
 
+  // Define a function 'addTodo' to add a new todo item to the 'todos' state
   const addTodo = (todo) => {
     setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev])
   }
@@ -19,6 +20,7 @@ function App() {
     setTodos((prev) => prev.filter((todo) => todo.id !== id))
   }
 
+  // Define a function 'toggleComplete' to toggle the 'completed' property of a todo item
   const toggleComplete = (id) => {
     //console.log(id);
     setTodos((prev) =>
@@ -29,6 +31,7 @@ function App() {
         } : prevTodo))
   }
 
+  // Use useEffect to load todos from local storage when the components mounts
   useEffect(() => {
     const todos = JSON.parse(localStorage.getItem("todos"))
 
@@ -37,6 +40,7 @@ function App() {
     }
   }, [])
 
+  // Use useEffect to save todos to local storage whenever the "todos" state change
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos))
   }, [todos])
