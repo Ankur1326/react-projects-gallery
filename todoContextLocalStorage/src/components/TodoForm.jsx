@@ -3,15 +3,18 @@ import { useTodo } from '../contexts/TodoContext'
 
 function TodoForm() {
     const [todo, setTodo] = useState("")
-    const {addTodo} = useTodo()
+    const {addTodo} = useTodo() // Use the custom 'useTodo' hook to access the 'addTodo' function from the context
 
+    // Define a function 'add' to handle the submission of a new todo
     const add = (e) => {
       e.preventDefault()
 
+      //Check if the 'todo' input is empty, and return if it is
       if (!todo) return
 
+      // Call the 'addTodo' function from the context to add a new todo
       addTodo({ todo, completed: false})
-      setTodo("")
+      setTodo("") // Clear the input field by resetting the 'todo' state to an empty string
     }
 
   return (
