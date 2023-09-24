@@ -9,7 +9,9 @@ function App() {
 
   // Define a function 'addTodo' to add a new todo item to the 'todos' state
   const addTodo = (todo) => {
-    setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev])
+    setTodos((prev) =>
+      [{ id: Date.now(), ...todo }, ...prev]
+    )
   }
 
   const updateTodo = (id, todo) => {
