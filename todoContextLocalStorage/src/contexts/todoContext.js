@@ -1,6 +1,6 @@
 import {createContext, useContext} from "react"
 
-// Create a new context called 'TodoContext' with default value for todos and funcitons 
+// Create a new context called 'TodoContext' with default value for todos and functions 
 export const TodoContext = createContext({
     todos: [
         {
